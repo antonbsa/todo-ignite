@@ -1,8 +1,12 @@
+import todoLogo from './assets/logo.svg'
+import styles from './App.module.css'
 import './global.css'
 
 function App() {
   return (
-    <h1>hello World!</h1>
+    <header className={styles.header}>
+      <img src={todoLogo} alt="Logotipo" />
+    </header>
   )
 }
 
