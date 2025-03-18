@@ -1,7 +1,8 @@
+import { PlusCircle } from 'phosphor-react'
+import { Task } from './components/Task'
 import todoLogo from './assets/logo.svg'
 import styles from './App.module.css'
 import './global.css'
-import { Task } from './components/Task'
 
 const tasksList = [
   {
@@ -29,9 +30,11 @@ function App() {
       </header>
 
       <main>
-        <section className="newTask">
-          <input type="text" placeholder="Adicionar nova tarefa" />
-          <button type="button">Adicionar</button>
+        <section className={styles.newTask}>
+          <input type="text" placeholder="Adicione uma nova tarefa" />
+          <button type="button">
+            Criar <PlusCircle size={20} />
+          </button>
         </section>
 
         <section className="tasksList">
