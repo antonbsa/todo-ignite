@@ -1,8 +1,11 @@
 import { Task } from './components/Task'
+import { NewTask } from './components/NewTask'
+
 import todoLogo from './assets/logo.svg'
+import clipboard from './assets/clipboard.svg'
+
 import styles from './App.module.css'
 import './global.css'
-import { NewTask } from './components/NewTask'
 
 const tasksList = [
   {
@@ -41,16 +44,31 @@ function App() {
             </div>
           </div>
 
-          <div className={styles.list}>
-            {tasksList.map(task => (
-              <Task
-                key={task.id}
-                id={task.id}
-                title={task.title}
-                isCompleted={task.isCompleted}
+          {tasksList.length > 0 ? (
+            <div className={styles.list}>
+              {tasksList.map(task => (
+                <Task
+                  key={task.id}
+                  id={task.id}
+                  title={task.title}
+                  isCompleted={task.isCompleted}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className={styles.emptyList}>
+              <img
+                src={clipboard}
+                alt="Ícone de prancheta"
+                width={56}
               />
-            ))}
-          </div>
+              <p>
+                <strong>Você ainda não tem tarefas cadastradas</strong>
+                <br/>
+                Crie tarefas e organize seus itens a fazer
+              </p>
+            </div>
+          )}
         </section>
       </main>
     </>

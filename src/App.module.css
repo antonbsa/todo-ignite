@@ -48,6 +48,10 @@ header {
 }
 
 .counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   padding: 2px 8px;
   border-radius: 12px;
   margin-left: 8px;
@@ -64,6 +68,20 @@ header {
   flex-direction: column;
 
   margin-top: 24px;
+}
+
+.emptyList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 24px;
   border-top: 1px solid var(--gray-500);
   border-radius: 8px;
+
+  padding: 64px 24px;
+}
+
+.emptyList p {
+  margin-top: 16px;
 }
