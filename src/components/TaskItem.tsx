@@ -1,3 +1,4 @@
+import { Trash } from 'phosphor-react'
 import styles from './TaskItem.module.css';
 
 interface TaskProps {
@@ -14,7 +15,7 @@ export function TaskItem({ title }: TaskProps) {
         {title}
       </p>
       <button className={styles.delete} type="button">
-        Remover
+        <Trash size={18} weight="bold" />
       </button>
     </div>
   )

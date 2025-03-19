@@ -1,0 +1,59 @@
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 16px;
+  outline: 1px solid var(--gray-400);
+
+  background-color: var(--gray-500);
+  border-radius: 8px;
+}
+
+.task + .task {
+  margin-top: 12px;
+}
+
+.checkbox {
+  width: 17px;
+  height: 17px;
+  margin: 3.5px;
+
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: none;
+  border: 2px solid var(--blue);
+
+  cursor: pointer;
+}
+
+.checkbox:hover {
+  border-color: var(--blue-dark);
+  background-color: color-mix(in srgb, var(--blue-dark) 20%, transparent);
+}
+
+p {
+  width: 100%;
+  color: var(--gray-100);
+}
+
+.delete {
+  display: flex;
+  align-items: center;
+
+  padding: 5px;
+  border-radius: 4px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  color: var(--gray-300);
+  transition: 0.2s color, 0.2s background-color;
+}
+
+.delete:hover {
+  background-color: var(--gray-400);
+  color: var(--danger);
+}

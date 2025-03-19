@@ -23,6 +23,11 @@ const tasksList = [
     title: 'Atualizar LinkedIn',
     isCompleted: true,
   },
+  {
+    id: 4,
+    title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+    isCompleted: true,
+  },
 ]
 
 const EmptyList: React.FC = () => {
@@ -57,7 +62,7 @@ function App() {
               Tarefas Criadas <span className={styles.counter}>0</span>
             </div>
             <div className={`${styles.infoItem} ${styles.completed}`}>
-              Concluídas <span className={styles.counter}>5 de 5</span>
+              Concluídas <span className={styles.counter}>2 de 5</span>
             </div>
           </div>
 
