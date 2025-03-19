@@ -31,17 +31,17 @@ function App() {
 
       <main>
         <NewTask />
-        <section className="tasksList">
-          <div className="info">
-            <div className="created">
-              Taregas Criadas <span>5</span>
+        <section className={styles.tasks}>
+          <div className={styles.info}>
+            <div className={`${styles.infoItem} ${styles.created}`}>
+              Tarefas Criadas <span className={styles.counter}>0</span>
             </div>
-            <div className="created">
-              Taregas Concluídas <span>5 de 5</span>
+            <div className={`${styles.infoItem} ${styles.completed}`}>
+              Concluídas <span className={styles.counter}>5 de 5</span>
             </div>
           </div>
 
-          <div className="list">
+          <div className={styles.list}>
             {tasksList.map(task => (
               <Task
                 key={task.id}
