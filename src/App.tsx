@@ -25,6 +25,23 @@ const tasksList = [
   },
 ]
 
+const EmptyList: React.FC = () => {
+  return (
+    <div className={styles.emptyList}>
+      <img
+        src={clipboard}
+        alt="Ícone de prancheta"
+        width={56}
+      />
+      <p>
+        <strong>Você ainda não tem tarefas cadastradas</strong>
+        <br/>
+        Crie tarefas e organize seus itens a fazer
+      </p>
+    </div>
+  )
+}
+
 function App() {
   return (
     <>
@@ -56,18 +73,7 @@ function App() {
               ))}
             </div>
           ) : (
-            <div className={styles.emptyList}>
-              <img
-                src={clipboard}
-                alt="Ícone de prancheta"
-                width={56}
-              />
-              <p>
-                <strong>Você ainda não tem tarefas cadastradas</strong>
-                <br/>
-                Crie tarefas e organize seus itens a fazer
-              </p>
-            </div>
+            <EmptyList />
           )}
         </section>
       </main>
