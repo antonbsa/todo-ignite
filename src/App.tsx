@@ -1,5 +1,5 @@
-import { Task } from './components/Task'
 import { NewTask } from './components/NewTask'
+import { TaskItem } from './components/TaskItem'
 
 import todoLogo from './assets/logo.svg'
 import clipboard from './assets/clipboard.svg'
@@ -64,7 +64,7 @@ function App() {
           {tasksList.length > 0 ? (
             <div className={styles.list}>
               {tasksList.map(task => (
-                <Task
+                <TaskItem
                   key={task.id}
                   id={task.id}
                   title={task.title}
