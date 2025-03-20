@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Task } from '../App';
 
 interface TaskProps extends Task {
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
 }
 
 export function TaskItem({ id, title, isChecked, onDelete }: TaskProps) {

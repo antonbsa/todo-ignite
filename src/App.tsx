@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ulid } from 'ulid'
 
 import { NewTask } from './components/NewTask'
 import { TaskItem } from './components/TaskItem'
@@ -10,29 +11,29 @@ import styles from './App.module.css'
 import './global.css'
 
 export interface Task {
-  id: number;
+  id: string;
   title: string;
   isChecked: boolean;
 }
 
 const tasksList = [
   {
-    id: 1,
+    id: '1',
     title: 'Estudar React',
     isChecked: false,
   },
   {
-    id: 2,
+    id: '2',
     title: 'Aplicar aporte mensal',
     isChecked: false,
   },
   {
-    id: 3,
+    id: '3',
     title: 'Atualizar LinkedIn',
     isChecked: true,
   },
   {
-    id: 4,
+    id: '4',
     title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
     isChecked: true,
   },
@@ -61,19 +62,22 @@ function orderByUnchecked(tasks: Task[]): Task[] {
 
 function App() {
   const [tasks, setTasks] = useState(orderByUnchecked(tasksList))
-
+  
   function handleCreateTask(title: string) {
     const newTask = {
-      id: tasks.length + 1,
+      id: ulid(),
       title,
       isChecked: false,
     }
     setTasks(orderByUnchecked([...tasks, newTask]))
   }
 
-  function deleteTask(id: number) {
+  function deleteTask(id: string) {
     setTasks(tasks.filter(task => task.id !== id))
   }
+
+  const completedTasks = tasks.filter(task => task.isChecked).length
+  const tasksAmount = tasks.length
 
   return (
     <>
@@ -86,10 +90,16 @@ function App() {
         <section className={styles.tasks}>
           <div className={styles.info}>
             <div className={`${styles.infoItem} ${styles.created}`}>
-              Tarefas Criadas <span className={styles.counter}>0</span>
+              Tarefas Criadas
+              <span className={styles.counter}>
+                {tasksAmount}
+              </span>
             </div>
             <div className={`${styles.infoItem} ${styles.completed}`}>
-              Concluídas <span className={styles.counter}>2 de 5</span>
+              Concluídas
+              <span className={styles.counter}>
+                {tasksAmount === 0 ? 0 : `${completedTasks} de ${tasksAmount}`}
+              </span>
             </div>
           </div>
 
