@@ -1,11 +1,9 @@
 import { Trash, Check } from 'phosphor-react'
 import styles from './TaskItem.module.css';
 import { useState } from 'react';
+import { Task } from '../App';
 
-interface TaskProps {
-  id: number;
-  title: string;
-  isChecked: boolean;
+interface TaskProps extends Task {
   onDelete: (id: number) => void;
 }
 

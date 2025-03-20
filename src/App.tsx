@@ -9,6 +9,12 @@ import clipboard from './assets/clipboard.svg'
 import styles from './App.module.css'
 import './global.css'
 
+export interface Task {
+  id: number;
+  title: string;
+  isChecked: boolean;
+}
+
 const tasksList = [
   {
     id: 1,
@@ -49,8 +55,12 @@ const EmptyList: React.FC = () => {
   )
 }
 
+function orderByUnchecked(tasks: Task[]): Task[] {
+  return tasks.sort((a, b) => Number(a.isChecked) - Number(b.isChecked))
+}
+
 function App() {
-  const [tasks, setTasks] = useState(tasksList)
+  const [tasks, setTasks] = useState(orderByUnchecked(tasksList))
 
   function handleCreateTask(title: string) {
     const newTask = {
@@ -58,7 +68,7 @@ function App() {
       title,
       isChecked: false,
     }
-    setTasks([...tasks, newTask])
+    setTasks(orderByUnchecked([...tasks, newTask]))
   }
 
   function deleteTask(id: number) {
