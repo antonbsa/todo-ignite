@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { NewTask } from './components/NewTask'
 import { TaskItem } from './components/TaskItem'
 
@@ -11,22 +13,22 @@ const tasksList = [
   {
     id: 1,
     title: 'Estudar React',
-    isCompleted: false,
+    isChecked: false,
   },
   {
     id: 2,
     title: 'Aplicar aporte mensal',
-    isCompleted: false,
+    isChecked: false,
   },
   {
     id: 3,
     title: 'Atualizar LinkedIn',
-    isCompleted: true,
+    isChecked: true,
   },
   {
     id: 4,
     title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    isCompleted: true,
+    isChecked: true,
   },
 ]
 
@@ -48,6 +50,21 @@ const EmptyList: React.FC = () => {
 }
 
 function App() {
+  const [tasks, setTasks] = useState(tasksList)
+
+  function handleCreateTask(title: string) {
+    const newTask = {
+      id: tasks.length + 1,
+      title,
+      isChecked: false,
+    }
+    setTasks([...tasks, newTask])
+  }
+
+  function deleteTask(id: number) {
+    setTasks(tasks.filter(task => task.id !== id))
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -55,7 +72,7 @@ function App() {
       </header>
 
       <main>
-        <NewTask />
+        <NewTask onCreate={handleCreateTask} />
         <section className={styles.tasks}>
           <div className={styles.info}>
             <div className={`${styles.infoItem} ${styles.created}`}>
@@ -66,14 +83,15 @@ function App() {
             </div>
           </div>
 
-          {tasksList.length > 0 ? (
+          {tasks.length > 0 ? (
             <div className={styles.list}>
-              {tasksList.map(task => (
+              {tasks.map(task => (
                 <TaskItem
                   key={task.id}
                   id={task.id}
                   title={task.title}
-                  isCompleted={task.isCompleted}
+                  isChecked={task.isChecked}
+                  onDelete={deleteTask}
                 />
               ))}
             </div>
