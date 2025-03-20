@@ -1,21 +1,21 @@
 import { Trash, Check } from 'phosphor-react'
-import styles from './TaskItem.module.css';
-import { useState } from 'react';
-import { Task } from '../App';
+import styles from './TaskItem.module.css'
+import { useState } from 'react'
+import { Task } from '../App'
 
 interface TaskProps extends Task {
   onDelete: (id: string) => void;
 }
 
 export function TaskItem({ id, title, isChecked, onDelete }: TaskProps) {
-  const [isCompleted, setIsCompleted] = useState(isChecked);
+  const [isCompleted, setIsCompleted] = useState(isChecked)
 
   function handleToggleTask() {
-    setIsCompleted(!isCompleted);
+    setIsCompleted(!isCompleted)
   }
 
   function handleDeleteTask() {
-    onDelete(id);
+    onDelete(id)
   }
 
   const checkboxStyle = `${styles.checkbox} ${isCompleted ? styles.checkboxCompleted : ''}`
