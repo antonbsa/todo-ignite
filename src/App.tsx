@@ -49,7 +49,7 @@ const EmptyList: React.FC = () => {
       />
       <p>
         <strong>Você ainda não tem tarefas cadastradas</strong>
-        <br/>
+        <br />
         Crie tarefas e organize seus itens a fazer
       </p>
     </div>
@@ -62,7 +62,20 @@ function orderByUnchecked(tasks: Task[]): Task[] {
 
 function App() {
   const [tasks, setTasks] = useState(orderByUnchecked(tasksList))
-  
+
+  function toggleTask(id: string) {
+    const updatedTasks = tasks.map(task => {
+      if (task.id === id) {
+        return {
+          ...task,
+          isChecked: !task.isChecked,
+        }
+      }
+      return task
+    })
+    setTasks(orderByUnchecked(updatedTasks))
+  }
+
   function handleCreateTask(title: string) {
     const newTask = {
       id: ulid(),
@@ -111,6 +124,7 @@ function App() {
                   id={task.id}
                   title={task.title}
                   isChecked={task.isChecked}
+                  onToggle={toggleTask}
                   onDelete={deleteTask}
                 />
               ))}
