@@ -57,7 +57,9 @@ const EmptyList: React.FC = () => {
 }
 
 function orderByUnchecked(tasks: Task[]): Task[] {
-  return tasks.sort((a, b) => Number(a.isChecked) - Number(b.isChecked))
+  const uncheckedTasks = tasks.filter(task => !task.isChecked)
+  const checkedTasks = tasks.filter(task => task.isChecked)
+  return [...uncheckedTasks, ...checkedTasks]
 }
 
 function App() {
