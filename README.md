@@ -1,4 +1,19 @@
-# Setup
+## Features
+- Add new task
+- Mark and unmark a task as complete
+- Remove a task from the list
+- Show task completion progress
+
+## Key-concepts
+- State
+- Immutability of the state
+- Lists and keys
+- Properties
+- Componentization
+
+---
+
+## Setup
 
 ### Development
 
